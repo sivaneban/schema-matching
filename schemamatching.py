@@ -48,6 +48,7 @@ def compare_xmls(xml1, xml2):
     
     for tag in xml2_data:
         predictions = pipeline.predict(xml2_data[tag])
+        total = len(predictions)
         for p in predictions:
-            outputs.loc[tag, p] += 1
+            outputs.loc[tag, p] += 1.0 / total
     return outputs
